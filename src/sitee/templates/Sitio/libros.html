@@ -1,0 +1,90 @@
+{% include 'sitio/cabecera.html' %}
+
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+<br>
+<div class="row">
+  <div class="container" style="padding: 1% 5% 2% 5%;">
+    <div class="row">
+
+      <div class="dropdown col ">
+        <div class="btn-group dropright">
+          <button type="button" class="btn btn-dark dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+            Categorias de libros
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/site/libros/search/category/Todas">Todas</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Filosofia">Filosofia</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Tecnologia">Tecnologia</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Ciencia">Ciencia</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Espiritualidad">Espiritualidad</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Cocina y Gastronomía">Cocina y Gastronomía</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Negocios y Finanzas">Negocios y Finanzas</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Autoayuda y Desarrollo Personal">Autoayuda y Desarrollo Personal</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Religión">Religión</a>
+            <a class="dropdown-item" href="/site/libros/search/category/InfantilyJuvenil">Infantil/Juvenil</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Géneros literarios clásicos">Géneros literarios clásicos</a>
+            <a class="dropdown-item" href="/site/libros/search/category/Ficción">Ficción</a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+          <div class="col-auto" style="width: 50%;">
+              <form action="/site/libro/search" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                  <div class="input-group">
+                      <input type="search" id="txtSearch" name="txtSearch" class="form-control" placeholder="Buscar" maxlength="40">
+
+                      <div class="input-group-append">
+                          <button class="btn btn-dark" type="submit">Buscar</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+
+      
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <div class="row" style=".row{width: 100%;} ">
+
+        {% for libro in libros %}
+
+        <div class="col-md-3" style="padding: 2% 2% 1% 2%; max-width: 290px; width: 250px; height: 450px; margin: auto;">
+          <div class="card" style="width: 211px; "  >
+
+                <img class="card-img-top" src="/site/img/{{libro[6]}}" alt="Title" style="width: 210px; height: 300px; " >
+                <div class="card-body">
+                    <h4 class="card-title" style="max-width: 250px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{libro[1]}}</h4>
+                    <p class="card-text">
+                      <a target="_blank" class="btn btn-outline-dark" href="{{libro[7]}}" role="button">Descargar</a>
+                      <input type="hidden" value="{{libro[0]}}" name="txtID" id="txtID">
+                      <a  href="/site/informacion/{{libro[0]}}" type="button" class="btn btn-success ms-3">Info</a>
+                    </p>
+                </div>
+          </div>
+           
+        </div>
+
+        {% endfor %}
+        
+    </div>
+
+
+
+    
+
+{% include 'sitio/pie.html' %}
+
+
+

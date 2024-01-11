@@ -1,0 +1,156 @@
+{% include 'admin/ADcabecera.html' %}
+<style>
+  .body{
+    background: #516a743e;
+  }
+</style>
+
+
+<div class="body">
+<div class="col-md-3">
+</div>
+
+<div class="col-md-6 mx-auto">
+  <br>
+  <!-- card de agregar libro -->
+  <div class="card">
+      <!-- encabezado de la card -->
+      <div class="card-header">
+          <div class="row">
+              <div class="col-md-6">
+                  <h4>Datos del libro</h4>
+                  
+              </div>
+          </div>
+      </div>
+
+
+
+      
+
+      
+
+
+      
+      <!-- cuerpo de la card -->
+    <div class="card-body">
+
+        
+
+
+        {% for libro in libro %}
+        <form action="/site/admin/libros/actualizar" method="post" enctype="multipart/form-data">
+
+
+
+
+
+
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+
+
+
+            
+
+            <input type="hidden" value="{{libro[0]}}" id="txtID" name="txtID">
+
+              <!-- nombre -->
+              <div class="mb-3">
+                
+                  <label for="txtNombreLibro" class="form-label">Nombre:</label>
+                  <input type="text" class="form-control" name="txtNombreLibro" id="txtNombreLibro" placeholder="Ingrese el nombre del libro" value="{{libro[1]}}"  maxlength="200" required>
+              </div>
+
+              <!-- autor -->
+              <div class="mb-3">
+                  <label for="txtAutorLibro" class="form-label">Autor:</label>
+                  <input type="text" class="form-control" name="txtAutorLibro" id="txtAutorLibro" placeholder="Ingrese el autor del libro" value="{{libro[2]}}" maxlength="80" required>
+              </div>
+
+              <!-- editorial -->
+              <div class="mb-3">
+                  <label for="txtEditorial" class="form-label">Editorial:</label>
+                  <input type="text" class="form-control" name="txtEditorial" id="txtEditorial" placeholder="Ingrese la editorial del libro" value="{{libro[3]}}" maxlength="80" required>
+              </div>
+
+              <!-- año -->
+              <div class="mb-3">
+                  <label for="txtAño" class="form-label">Año:</label>
+                  <input type="number" class="form-control" name="txtAño" id="txtAño" placeholder="Ingrese el año del libro" value="{{libro[4]}}" maxlength="4" required>
+              </div>
+
+              <!-- imagen -->
+              <div class="mb-3">
+                  <label for="txtImagen" class="form-label">Imagen:</label>
+                  <input type="file" class="form-control" name="txtImagen" id="txtImagen" placeholder="Seleccione la imagen del libro" value="{{libro[6]}}" maxlength="255">
+              </div>
+
+
+              <!-- categorías -->
+              <div class="mb-3">
+                <label for="txtCategorias" class="form-label">Categoría:</label>
+                <select class="form-select" id="txtCategorias" name="txtCategorias">
+                    <!-- Aquí debes llenar las opciones con las categorías disponibles -->
+                    <option value="{{libro[8]}}">{{libro[8]}}</option>
+                    <option value="Filosofia">Filosofia</option>
+                    <option value="Tecnologia">Tecnologia</option>
+                    <option value="Ciencia">Ciencia</option>
+                    <option value="Espiritualidad">Espiritualidad</option>
+                    <option value="Cocina y Gastronomía">Cocina y Gastronomía</option>
+                    <option value="Negocios y Finanzas">Negocios y Finanzas</option>
+                    <option value="Autoayuda y Desarrollo Personal">Autoayuda y Desarrollo Personal</option>
+                    <option value="Religión">Religión</option>
+                    <option value="Infantil/Juvenil">Infantil/Juvenil</option>
+                    <option value="Géneros literarios clásicos">Géneros literarios clásicos</option>
+                    <option value="Ficción">Ficción</option>
+                </select>
+               </div>
+
+
+
+
+
+              <!-- descripcion -->
+              <div class="mb-3">
+                  <label for="txtDescripcion" class="form-label">Descripcion:</label>
+                  <textarea class="form-control" name="txtDescripcion" id="txtDescripcion" placeholder="Ingrese una descripcion del libro" rows="4" value="{{libro[5]}}" maxlength="799">{{libro[5]}}</textarea>
+              </div>
+
+              <!-- URL -->
+              <div class="mb-3">
+                  <label for="txtURL" class="form-label">URL Descarga:</label>
+                  <input type="text" class="form-control" name="txtURL" id="txtURL" placeholder="Ingrese la URL del libro" value="{{libro[7]}}" maxlength="500" required>
+              </div>
+
+              <!-- boton -->
+              <button type="submit" class="btn btn-primary">Agregar</button>
+
+        </form>
+        {% endfor %}
+        
+    </div>
+
+
+      <!-- pie de la card -->
+      <div class="card-footer text-muted">
+      </div>
+  </div>
+</div>
+<br>
+<br>
+
+
+
+
+<div class="col-md-3 text-left ml-auto mt-1 mr-4 ms-4 me-2">
+  <div class="col-md-6 text-right">
+      <a href="/site/admin/libros" class="btn btn-secondary">Volver</a>
+  </div>
+</div>
+<br>
+
+</div>
+
+
+{% include 'admin/ADpie.html' %}

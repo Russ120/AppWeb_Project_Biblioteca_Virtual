@@ -1,0 +1,50 @@
+{% include 'sitio/cabecera.html' %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4" >
+            <div style="margin: auto; align-items: center; text-align: center;">
+                
+                <img src="/site/img/{{libro[6]}}" alt="Imagen del libro" class="img-fluid" style="width: 400px; height: auto; border: 1px solid ">
+            </div>
+            <br>
+            <a href="{{libro[9]}}" class="btn btn-primary mt-3" >Descargar</a>
+            <br>
+            <br>
+            <br>
+        </div>
+
+        <div class="col-md-8"  style="overflow: hidden; text-overflow: ellipsis;" ">
+            
+            <h1><strong>{{libro[1]}}</strong></h1>
+            <br>
+
+            <label><strong>Autor</strong></label>
+            <p>{{libro[2]}}</p>
+
+            <label><strong>Editorial</strong></label>
+            <p>{{libro[3]}}</p>
+
+            <label><strong>Año</strong></label>
+            <p>{{libro[4]}}</p>
+
+            <p><strong>Categoria</strong></p>
+            <p>{{libro[8]}}</p>
+
+            <p><strong>Descripcion</strong></p>
+            <p>{{libro[5]}}</p>
+        
+        </div>
+    </div>
+</div>
+
+
+{% include 'sitio/pie.html' %}

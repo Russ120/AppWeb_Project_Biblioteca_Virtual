@@ -1,0 +1,155 @@
+{% include 'admin/ADcabecera.html' %}
+
+<br>
+
+
+
+
+<div class="container">
+
+  
+    <div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a href="/site/libro/añadir" class="btn btn-success mx-2 " type="submit">Añadir nuevo  libro</a>
+            </div>
+
+            
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+
+
+            <div class="col-auto" style="width: 40%;">
+                <form action="/site/admin/libros/search" method="post">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="input-group">
+                        <input type="search" id="txtAdminSearch" name="txtAdminSearch" class="form-control" placeholder="Buscar" maxlength="40">
+  
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+        <div class="col-md-12">
+            <br>
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered" >
+                  <thead class="thead-dark table-hover" >
+                    <tr>
+                      <!-- <th scope="col">ID</th> -->
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Autor</th>
+                      <th scope="col">Editorial</th>
+                      <th scope="col">Año</th>
+                      <th scope="col" >Descripcion</th>
+                      <th scope="col">Imagen</th>
+                      <th scope="col">URL</th>
+                      <th scope="col">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    {% for libro in libros %}
+                            
+                    <tr class="" style="max-height: 50px; overflow: hidden; text-overflow: ellipsis;">
+                        <!-- <td scope="row">{{libro[0]}}</td> -->
+                        <td class="w-5"  style="max-width: 100px;">{{libro[1]}}</td>
+                        <td class="w-5"  style="max-width: 70px;">{{libro[2]}}</td>
+                        <td class="w-5"  style="max-width: 80px;">{{libro[3]}}</td>
+                        <td class="w-5"  style="max-width: 40px; overflow: hidden; text-overflow: ellipsis;"">{{libro[4]}}</td>
+                        <td class="w-2" style="max-width: 120px;  overflow: hidden; text-overflow: ellipsis;  line-height: 1.5em;">
+                            <div  style="max-height: 120px; ">{{libro[5]}}</div>
+                        </td>
+                        
+                        
+                        <td class="w-5" style="width: 70px;">
+                            <a href="/site/img/{{libro[6]}}">
+                                <img
+                                    width="60"
+                                    src="/site/img/{{libro[6]}}"
+                                    class="img-fluid rounded-top"
+                                    alt=""
+                                />
+                            </a>
+                        </td>
+                        <td class="w-5" style="max-width: 30px;">
+                            <a href="{{libro[7]}}" role="button" class="btn btn-success">Link</a>
+                        </td>
+                        <td class="w-5" style="max-width: 90px; .custom-form{margin-bottom: 10px;} .custom-btn{width: 50px; margin-bottom: 5px; font-size: 14px; }">
+
+                            <form action="/site/admin/libros/editar" method="post" class="custom-form">
+
+
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+
+                                <input type="hidden" value="{{libro[0]}}" id="txtIDedit" name="txtIDedit">
+                                <button type="submit" class="btn btn-dark custom-btn">Editar</button>
+                            </form>
+                            
+                            <form action="/site/admin/libros/borrar" method="post" class="custom-form">
+
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+
+                                <input type="hidden" value="{{libro[0]}}" id="txtID" name="txtID">
+                                <button type="submit" class="btn btn-danger custom-btn">Eliminar</button>
+                            </form>
+                            
+                        </td>
+                    </tr>
+            
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+            <style>
+                .custom-form {
+                    margin-bottom: 10px;
+                }
+            
+                .custom-btn {
+                    width: 150px; 
+                }
+            </style>
+        </div>
+        
+    </div>
+  </div>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+{% include 'admin/ADpie.html' %}

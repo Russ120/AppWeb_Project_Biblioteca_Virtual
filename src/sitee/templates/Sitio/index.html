@@ -1,0 +1,52 @@
+{% include 'sitio/cabecera.html' %}
+
+    <!-- <div class="p-5 mb-4 bg-light rounded-3">
+
+      
+       -->
+
+        <!-- <div class="container-fluid py-5 ">
+          <h1 class="display-5 fw-bold">Bienvenido</strong></h1>
+          <p class="col-md-8 fs-4"></p>
+          <a class="btn btn-success btn-lg" href="/site/libros" type="button">Ver libros disponibles</a>
+        </div>
+      </div>
+ -->
+
+
+      <div class="container" >
+        <div class="row">
+          <!-- Columna de texto -->
+          <div class="col-md-8">
+    
+            <div class="p-5 mb-4 bg-light-gray rounded-3">
+              <div class="container-fluid py-6">
+                <br>
+                <br>
+                <br>
+                <br>
+                <p class="display-6 fw-bold">Welcome a la mejor librería</p>
+                <p class="col-md-10 fs-5">Descubre libros electrónicos fascinantes y sumérgete en historias que despiertan la imaginación. ¡Bienvenido a tu nueva fuente de lectura en línea!</p>
+                <p>
+                  <br>
+                  <a class="btn btn-dark btn-lg" href="/site/libros" role="button">Ver libros disponibles</a>
+                </p>
+              </div>
+            </div>
+    
+          </div>
+          
+          <!-- Columna de imagen -->
+          <div class="col-md-4">
+            <br>
+            <br>
+            <br>
+            <img class="img-fluid" src='{{ url_for("user.static", filename="img/index.png") }}'  alt="Library Image">
+          </div>
+        </div>
+      </div>
+
+
+      
+
+{% include 'sitio/pie.html' %}
